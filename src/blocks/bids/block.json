@@ -1,0 +1,24 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "auction-plugin/bids",
+    "title": "bids",
+    "category": "text",
+    "icon": "list-view",
+    "description": "Shows bids list...",
+    "keywords": [
+      "auction",
+      "bids"
+    ],
+    "version": "1.0.3",
+    "textdomain": "auction-plugin",
+    "editorScript": "file:./index.js",
+    "attributes": {
+      "auction_id": {
+        "type": "string",
+        "default": ""
+      }
+    },
+    "style": "file:./index.css",
+    "script": "file:./frontend.js"
+  }

@@ -1,0 +1,25 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "auction-plugin/auction-countdown",
+    "title": "Auction Countdown",
+    "category": "widgets",
+    "icon": "clock",
+    "description": "Displays a countdown to the auction end time.",
+    "keywords": [
+        "auction",
+        "countdown",
+        "timer"
+    ],
+    "version": "1.0.0",
+    "textdomain": "auction-plugin",
+    "editorScript": "file:./index.js",
+    "attributes": {
+        "auction_id": {
+            "type": "string",
+            "default": ""
+        }
+    },
+    "style": "file:./style.css",
+    "script": "file:./frontend.js"
+}
