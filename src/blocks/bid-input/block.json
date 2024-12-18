@@ -23,5 +23,6 @@
             "default": ""
         }
     },
+    "script": "file:./frontend.js",
     "style": "file:./index.css"
   }

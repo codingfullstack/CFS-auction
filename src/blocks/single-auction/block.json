@@ -1,52 +1,25 @@
 {
-    "$schema": "https://schemas.wp.org/trunk/block.json",
-    "apiVersion": 3,
-    "name": "auction-plugin/single-auction",
-    "title": "Single Auction",
-    "category": "widgets",
-    "icon": "hammer",
-    "description": "Display and edit auction details.",
-    "keywords": ["auction", "details"],
-    "version": "1.0.0",
-    "textdomain": "auction-plugin",
-    "editorScript": "file:./index.js",
-    "attributes": {
-      "auction_id": {
-        "type": "number",
-        "default": 0
-      },
-      "auction_title": {
-        "type": "string",
-        "default": ""
-      },
-      "start_price": {
-        "type": "number",
-        "default": 0
-      },
-      "buy_now_price": {
-        "type": "number",
-        "default": 0
-      },
-      "bid_step": {
-        "type": "number",
-        "default": 0
-      },
-      "reserve_price": {
-        "type": "number",
-        "default": 0
-      },
-      "auction_date_start": {
-        "type": "string",
-        "default": ""
-      },
-      "auction_date_end": {
-        "type": "string",
-        "default": ""
-      },
-      "status": {
-        "type": "string",
-        "default": "active"
-      }
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "auction-plugin/single-auction",
+  "title": "Single Auction",
+  "category": "widgets",
+  "icon": "hammer",
+  "description": "Display and edit auction details.",
+  "keywords": [
+    "auction",
+    "details"
+  ],
+  "version": "1.0.0",
+  "textdomain": "auction-plugin",
+  "editorScript": "file:./index.js",
+  "attributes": {
+    "auction_id": {
+      "type": "number",
+      "default": ""
     }
-  }
+  },
+  "script": "file:./frontend.js",
+  "style": "file:./index.css"
+}
   

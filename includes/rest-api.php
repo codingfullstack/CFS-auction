@@ -2,7 +2,8 @@
 
 
 // Pateikti siūlymą
-function auction_submit_bid(WP_REST_Request $request) {
+function auction_submit_bid(WP_REST_Request $request)
+{
     global $wpdb;
 
     $auction_id = intval($request->get_param('auction_id'));
@@ -32,7 +33,8 @@ function auction_submit_bid(WP_REST_Request $request) {
 }
 
 // Gauti siūlymų sąrašą
-function auction_get_bids(WP_REST_Request $request) {
+function auction_get_bids(WP_REST_Request $request)
+{
     global $wpdb;
 
     $auction_id = intval($request->get_param('id'));
@@ -48,7 +50,8 @@ function auction_get_bids(WP_REST_Request $request) {
 
     return new WP_REST_Response($bids, 200);
 }
-function auction_get_auction_data(WP_REST_Request $request) {
+function auction_get_auction_data(WP_REST_Request $request)
+{
     $auction_id = $request->get_param('auction_id');
 
     if (!$auction_id) {
@@ -67,4 +70,15 @@ function auction_get_auction_data(WP_REST_Request $request) {
         'start_date' => $start_date,
         'end_date' => $end_date,
     ], 200);
+}
+function get_auction_status($request)
+{
+    $auction_id = intval($request['id']);
+    if (!$auction_id) {
+        return new WP_REST_Response(['message' => 'Neteisingas ID'], 400);
+    }
+
+    $status = get_post_meta($auction_id, '_status', true);
+
+    return new WP_REST_Response(['status' => $status], 200);
 }

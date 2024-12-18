@@ -17,8 +17,8 @@ function auction_countdown_render_cb($attributes)
         return 'Nėra nurodytos pradžios arba pabaigos datos.';
     }
     ?>
-    <div class="auction-countdown">
-        <h2><?php echo __('Auction Countdown', 'auction-plugin'); ?></h2>
+    <div class="auction-countdown-container">
+        <h3><?php echo __('Auction Countdown', 'auction-plugin'); ?></h3>
         <p class="auction-countdown-time">
             <span id="auction-time" data-start-time="<?php echo esc_attr($start_date); ?>"
                 data-end-time="<?php echo esc_attr($end_date); ?>"

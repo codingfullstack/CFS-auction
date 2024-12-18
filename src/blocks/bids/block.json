@@ -15,10 +15,10 @@
     "editorScript": "file:./index.js",
     "attributes": {
       "auction_id": {
-        "type": "string",
+        "type": "number",
         "default": ""
       }
     },
-    "style": "file:./index.css",
-    "script": "file:./frontend.js"
+   "script": "file:./frontend.js",
+    "style": "file:./index.css"
   }

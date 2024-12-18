@@ -21,4 +21,9 @@ add_action('rest_api_init', function () {
         'callback' => 'auction_get_auction_data',
         'permission_callback' => '__return_true',
     ]);
+    register_rest_route('auction/v1', '/status/(?P<id>\d+)', [
+        'methods'  => 'GET',
+        'callback' => 'get_auction_status',
+        'permission_callback' => '__return_true', 
+    ]);
 });

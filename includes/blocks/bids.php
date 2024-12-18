@@ -16,8 +16,8 @@ function bids_auction_render_cb($attributes) {
     ));
     ob_start();
     ?>
-    <div class="auction-bids" >
-        <h2><?php esc_html_e('Auction Bids', 'CFS-auction'); ?></h2>
+    <div class="auction-bids-list-container" >
+        <h3><?php esc_html_e('Auction Bids', 'CFS-auction'); ?></h3>
         <ul id="bid_list">
         </ul>
     </div>

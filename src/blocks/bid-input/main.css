@@ -1,0 +1,67 @@
+.notification.success {
+    border-radius: 5px;
+    width: 800px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #2B3246;
+    cursor: pointer;
+    color: #0ad406;
+    margin: 20px;
+}
+.notification.error {
+    border-radius: 5px;
+    width: 800px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #2B3246;
+    cursor: pointer;
+    color: rgb(255, 10, 1);
+    margin: 20px;
+}
+.auction-bid-input-container h3 {
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.auction-bid-input-container .auction-bid-input {
+    border: none;
+    padding: 0.8em 1.2em;
+    border-radius: 1rem;
+    background: #e8e8e8;
+    transition: 0.3s;
+}
+
+.auction-bid-input:focus {
+    outline-color: #e8e8e8;
+    background: #e8e8e8;
+    box-shadow: inset 20px 20px 60px #c5c5c5,
+        inset -20px -20px 60px #ffffff;
+    transition: 0.3s;
+}
+
+.auction-bid-input-container button {
+    padding: 0.8em 1.2em;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: bold;
+    color: #fffdfd;
+    background-color: #1d1a1a;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+}
+
+button:hover {
+    background-color: #171b1a;
+    color: #fff;
+}
+
+button:active {
+    transform: translateY(-1px);
+}

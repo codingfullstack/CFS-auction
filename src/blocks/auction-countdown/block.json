@@ -20,6 +20,6 @@
             "default": ""
         }
     },
-    "style": "file:./style.css",
-    "script": "file:./frontend.js"
+    "script": "file:./frontend.js",
+    "style": "file:./index.css"
 }

@@ -8,11 +8,11 @@ function bid_input_render_cb($attributes)
 
     // HTML turinys su tekstu ir mygtuku
     ?>
-    <div id="notification" style="display: none;"></div>
+    <div class="notification" id="notification" style="display: none;"></div>
 
-    <div class="auction-bid-input">
+    <div class="auction-bid-input-container">
         <h3><?php echo esc_html(__('Enter Your Bid', 'CFS-auction')); ?></h3>
-        <input type="text" id="bid_amount" value="<?php echo esc_attr($bid_amount); ?>"
+        <input type="text" id="bid_amount" class="auction-bid-input" value="<?php echo esc_attr($bid_amount); ?>"
             placeholder="<?php echo esc_attr(__('Enter your bid...', 'CFS-auction')); ?>" class="auction-bid-input-field" />
         <input type="hidden" id="auction_id" value="<?php echo esc_attr($auction_id); ?>" />
         <button id="submit_bid" data-ajaxurl="<?php echo admin_url('admin-ajax.php'); ?>"

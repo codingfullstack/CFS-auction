@@ -20,7 +20,7 @@ mediaFrame.on("select", () => {
   ogImgCtr.innerHTML = ''; 
   const imageUrls = []; 
   selectedImages.forEach((attachment, index) => {
-    const imageUrl = attachment.sizes.thumbnail ? attachment.sizes.thumbnail.url : attachment.url; 
+    const imageUrl = attachment.sizes.medium ? attachment.sizes.medium.url : attachment.url; 
 
     const imgElement = document.createElement('img');
     imgElement.src = imageUrl;
