@@ -4,8 +4,12 @@ function auction_countdown_render_cb($attributes)
     ob_start();
 
     // Patikrinkite, ar aukciono ID pateikta
-    if (empty($attributes['auction_id'])) {
-        return 'Aukciono ID nenurodytas.';
+    if (get_post_type() === 'auction') {
+        $auction_id = get_the_ID();
+    } elseif (!empty($attributes['auction_id']) && intval($attributes['autcion_id']) > 0) {
+        $auction_id = intval($attributes['auction_id']);
+    } else{
+        return 'nerastas id';
     }
 
     // Paėmame aukciono pradžios ir pabaigos datas

@@ -14,10 +14,6 @@
     "textdomain": "auction-plugin",
     "editorScript": "file:./index.js",
     "attributes": {
-      "bid_amount": {
-        "type": "string",
-        "default": ""
-      },
       "auction_id": {
             "type": "string",
             "default": ""

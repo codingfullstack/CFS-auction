@@ -2,24 +2,23 @@
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
   "name": "auction-plugin/single-auction",
-  "title": "Single Auction",
+  "title": "single auction",
   "category": "widgets",
-  "icon": "hammer",
-  "description": "Display and edit auction details.",
+  "icon": "clock",
+  "description": "Display  auction details.",
   "keywords": [
-    "auction",
+     "auction",
     "details"
   ],
   "version": "1.0.0",
   "textdomain": "auction-plugin",
   "editorScript": "file:./index.js",
   "attributes": {
-    "auction_id": {
-      "type": "number",
-      "default": ""
-    }
+      "auction_id": {
+          "type": "string",
+          "default": ""
+      }
   },
   "script": "file:./frontend.js",
   "style": "file:./index.css"
 }
-  

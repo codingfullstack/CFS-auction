@@ -1,0 +1,9 @@
+{
+    "version": 2,
+    "customTemplates": {
+        "single-auction": {
+            "title": "Single Auction",
+            "description": "A template for single auction pages."
+        }
+    }
+}

@@ -7,11 +7,37 @@ import './main.css';
 import block from './block.json';
 
 registerBlockType(block.name, {
+    attributes: {
+        auction_id: {
+            type: 'string',
+        },
+        marginTop: {
+            type: 'string',
+            default: '20px', // default value for margin-top
+        },
+        marginBottom: {
+            type: 'string',
+            default: '20px', // default value for margin-bottom
+        },
+        padding: {
+            type: 'string',
+            default: '10px', // default value for padding
+        },
+    },
+
     edit({ attributes, setAttributes }) {
-        const { auction_id } = attributes;
+        const { auction_id, marginTop, marginBottom, padding } = attributes;
         const [auctionData, setAuctionData] = useState(null);
         const [remainingTime, setRemainingTime] = useState('');
         const [error, setError] = useState('');
+        const blockProps = useBlockProps({
+            className: "auction-countdown-container",
+            style: {
+                marginTop: marginTop,
+                marginBottom: marginBottom,
+                padding: padding,
+            }
+        });
 
         // Gauti aukciono duomenis iš REST API
         useEffect(() => {
@@ -65,13 +91,31 @@ registerBlockType(block.name, {
                             onChange={(newVal) => setAttributes({ auction_id: newVal })}
                             placeholder={__('Enter Auction ID', 'auction-plugin')}
                         />
+                        <TextControl
+                            label={__('Margin Top', 'auction-plugin')}
+                            value={marginTop}
+                            onChange={(newVal) => setAttributes({ marginTop: newVal })}
+                            placeholder={__('Enter Margin Top (e.g., 20px)', 'auction-plugin')}
+                        />
+                        <TextControl
+                            label={__('Margin Bottom', 'auction-plugin')}
+                            value={marginBottom}
+                            onChange={(newVal) => setAttributes({ marginBottom: newVal })}
+                            placeholder={__('Enter Margin Bottom (e.g., 20px)', 'auction-plugin')}
+                        />
+                        <TextControl
+                            label={__('Padding', 'auction-plugin')}
+                            value={padding}
+                            onChange={(newVal) => setAttributes({ padding: newVal })}
+                            placeholder={__('Enter Padding (e.g., 10px)', 'auction-plugin')}
+                        />
                     </PanelBody>
                 </InspectorControls>
-                <div {...useBlockProps()}>
-                    <h2>{__('Auction Countdown', 'auction-plugin')}</h2>
+                <div {...blockProps}>
+                    <h3>{__('Auction Countdown', 'auction-plugin')}</h3>
                     {error && <p>{error}</p>}
                     {auctionData && (
-                        <p>{__('Time remaining:', 'auction-plugin')} {remainingTime}</p>
+                        <p className='auction-countdown-time'>{__('Time remaining:', 'auction-plugin')} {remainingTime}</p>
                     )}
                     {!auction_id && <p>{__('Please set an Auction ID.', 'auction-plugin')}</p>}
                 </div>

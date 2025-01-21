@@ -8,10 +8,12 @@ import "./main.css";
 registerBlockType(block.name, {
   edit({ attributes, setAttributes }) {
     const { auction_id } = attributes;
+    const blockProps = useBlockProps({ className: "auction-details" });
+
     return (
       <>
         <InspectorControls>
-          <PanelBody title={__("Auction Settings", "CFS-auction")}>
+          <PanelBody title={__("Auction Settings", "auction-plugin")}>
             <TextControl
               label={__("Auction ID", "auction-plugin")}
               value={auction_id}
@@ -20,40 +22,38 @@ registerBlockType(block.name, {
             />
           </PanelBody>
         </InspectorControls>
-        <div {...useBlockProps()}>
-          <h3 className="labas">{__("Auction Details", "auction-plugin")}</h3>
+        <div {...blockProps} >
+          <h2>{__("Auction Title", "auction-plugin")}</h2>
+          <div className="main-image-container">
+            <img id="mainAuctionImage" src="#" alt="Main Auction" className="main-auction-image" />
+          </div>
+          <div className="thumbnail-container" id="thumbnailContainer">
+            <img src="#" alt="Thumbnail 1" className="thumbnail-image" />
+            <img src="#" alt="Thumbnail 2" className="thumbnail-image" />
+          </div>
           <p>
-            <strong>{__("Auction Title:", "auction-plugin")}</strong>{" "}
-            Pavadinimas
+            {__("Start Price:", "auction-plugin")} <span>0 EUR</span>
           </p>
           <p>
-            <strong>{__("Start Price:", "auction-plugin")}</strong>0 EUR
+            {__("Buy Now:", "auction-plugin")} <span>0 EUR</span>
           </p>
           <p>
-            <strong>{__("Buy Now Price:", "auction-plugin")}</strong>0 EUR
+            {__("Bid Step:", "auction-plugin")} <span>0 EUR</span>
           </p>
           <p>
-            <strong>{__("Bid Step:", "auction-plugin")}</strong>0 EUR
+            {__("Auction Start Date:", "auction-plugin")} <span>2024-01-01</span>
           </p>
           <p>
-            <strong>{__("Reserve Price:", "auction-plugin")}</strong>0 EUR
+            {__("Auction End Date:", "auction-plugin")} <span>2024-01-01</span>
           </p>
           <p>
-            <strong>{__("Auction Start Date:", "auction-plugin")}</strong>{" "}
-            2024-01-01
-          </p>
-          <p>
-            <strong>{__("Auction End Date:", "auction-plugin")}</strong>{" "}
-            2024-01-01
-          </p>
-          <p>
-            <strong>{__("Auction Status:", "auction-plugin")}</strong> Open
+            {__("Status:", "auction-plugin")} <span className="auction-status">Open</span>
           </p>
         </div>
       </>
     );
   },
   save() {
-    return null;
+    return null; // Dynamic rendering via PHP
   },
 });

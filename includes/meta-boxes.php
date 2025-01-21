@@ -5,7 +5,7 @@ function auction_add_meta_boxes() {
         'auction_price_meta',
         'Aukciono Kainos',
         'auction_price_meta_box_callback',
-        'auction',  // Priskiriame prie aukciono tipo
+        'auction',  
         'normal',
         'high'
     );

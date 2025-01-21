@@ -8,6 +8,7 @@ import block from "./block.json";
 registerBlockType(block.name, {
   edit({ attributes, setAttributes }) {
     const { bid_amount, auction_id } = attributes;
+    const blockProps = useBlockProps({ className: "auction-details" });
 
     // Funkcija, kuri atnaujina siūlymo sumą
     const onChangeBidAmount = (newBidAmount) => {
@@ -20,9 +21,9 @@ registerBlockType(block.name, {
     };
 
     return (
-      <div {...useBlockProps()}>
+      <>
         <InspectorControls>
-          <PanelBody title={__("Auction Settings", "auction-plugin")}>
+          <PanelBody title={__("Auction Settings", "CFS-auction")}>
             <TextControl
               label={__("Auction ID", "CFS-auction")}
               value={auction_id}
@@ -32,24 +33,26 @@ registerBlockType(block.name, {
           </PanelBody>
         </InspectorControls>
 
-        <div className="auction-bid-input">
+        <div
+          {...useBlockProps({ className: "auction-bid-input-container" })}
+        >
           <h3>{__("Enter Your Bid", "CFS-auction")}</h3>
-          <TextControl
-            label={__("Bid Amount", "CFS-auction")}
+          <input
+            type="text"
+            id="bid_amount"
+            className="auction-bid-input"
             value={bid_amount}
-            onChange={onChangeBidAmount}
             placeholder={__("Enter your bid...", "CFS-auction")}
-            __nextHasNoMarginBottom={true}
           />
+          <button
+            id="submit_bid"
+          >
+            {__("Siūlyti", "CFS-auction")}
+          </button>
         </div>
-        <button id="submit_bid" className="submit-bid-btn">
-          {__("Siūlyti", "CFS-auction")}
-        </button>
-      </div>
+      </>
     );
   },
-
-  // Bloko išsaugojimo funkcija (dynamic block, todėl nieko negrąžina)
   save() {
     return null; // HTML generuojama PHP, nes tai dinaminis blokas
   },
