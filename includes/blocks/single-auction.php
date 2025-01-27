@@ -1,15 +1,17 @@
 <?php
 function single_auction_render_cb($attributes)
 {
-
     if (get_post_type() === 'auction') {
+        // Jei dabartinis puslapis yra aukcionas, gauname ID iš dabartinio įrašo
         $auction_id = get_the_ID();
-    } elseif (!empty($attributes['auction_id']) && intval($attributes['autcion_id']) > 0) {
+        
+    } elseif (!empty($attributes['auction_id']) && intval($attributes['auction_id']) > 0) {
+        // Jei tai ne aukciono puslapis, tikriname, ar atributai turi galiojantį auction_id
         $auction_id = intval($attributes['auction_id']);
-    } else{
-        return 'nerastas id';
+    } else {
+        // Nei dabartinis puslapis nėra aukcionas, nei ID nėra perduotas
+        return "Nerastas aukciono ID";
     }
-
     $start_price = get_post_meta($auction_id, '_start_price', true);
     $buy_now = get_post_meta($auction_id, '_buy_now_price', true);
     $bid_step = get_post_meta($auction_id, '_bid_step', true);
@@ -21,7 +23,6 @@ function single_auction_render_cb($attributes)
     ob_start();
     ?>
     <div class="auction-details" data-auction-id="<?php echo esc_attr($auction_id); ?>">
-        <h2><?php echo esc_html($post_title, 'auction-plugin'); ?></h2>
         <div class="main-image-container">
             <img id="mainAuctionImage" src="<?php echo $main_image; ?>" alt="<?php echo esc_attr($post_title); ?>"
                 class="main-auction-image">

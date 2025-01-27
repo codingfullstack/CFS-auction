@@ -1,44 +1,29 @@
 import { registerBlockType } from '@wordpress/blocks';
 import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
-import { PanelBody, TextControl } from '@wordpress/components';
+import { PanelBody, TextControl, RangeControl } from '@wordpress/components';
 import { useState, useEffect } from '@wordpress/element';
 import './main.css';
 import block from './block.json';
 
 registerBlockType(block.name, {
-    attributes: {
-        auction_id: {
-            type: 'string',
-        },
-        marginTop: {
-            type: 'string',
-            default: '20px', // default value for margin-top
-        },
-        marginBottom: {
-            type: 'string',
-            default: '20px', // default value for margin-bottom
-        },
-        padding: {
-            type: 'string',
-            default: '10px', // default value for padding
-        },
-    },
+
 
     edit({ attributes, setAttributes }) {
-        const { auction_id, marginTop, marginBottom, padding } = attributes;
+        const { auction_id, marginTop, marginBottom, padding, fontSize } = attributes;
         const [auctionData, setAuctionData] = useState(null);
         const [remainingTime, setRemainingTime] = useState('');
         const [error, setError] = useState('');
+
         const blockProps = useBlockProps({
             className: "auction-countdown-container",
             style: {
-                marginTop: marginTop,
-                marginBottom: marginBottom,
-                padding: padding,
+                marginTop: `${marginTop}px`,
+                marginBottom: `${marginBottom}px`,
+                padding: `${padding}px`,
+                fontSize: `${fontSize}px`
             }
         });
-
         // Gauti aukciono duomenis iš REST API
         useEffect(() => {
             if (auction_id) {
@@ -91,23 +76,33 @@ registerBlockType(block.name, {
                             onChange={(newVal) => setAttributes({ auction_id: newVal })}
                             placeholder={__('Enter Auction ID', 'auction-plugin')}
                         />
-                        <TextControl
+                       <RangeControl
                             label={__('Margin Top', 'auction-plugin')}
                             value={marginTop}
-                            onChange={(newVal) => setAttributes({ marginTop: newVal })}
-                            placeholder={__('Enter Margin Top (e.g., 20px)', 'auction-plugin')}
+                            onChange={(newValue) => setAttributes({ marginTop: newValue })}
+                            min={0}
+                            max={100}
                         />
-                        <TextControl
+                        <RangeControl
                             label={__('Margin Bottom', 'auction-plugin')}
                             value={marginBottom}
-                            onChange={(newVal) => setAttributes({ marginBottom: newVal })}
-                            placeholder={__('Enter Margin Bottom (e.g., 20px)', 'auction-plugin')}
+                            onChange={(newValue) => setAttributes({ marginBottom: newValue })}
+                            min={0}
+                            max={100}
                         />
-                        <TextControl
+                        <RangeControl
                             label={__('Padding', 'auction-plugin')}
                             value={padding}
-                            onChange={(newVal) => setAttributes({ padding: newVal })}
-                            placeholder={__('Enter Padding (e.g., 10px)', 'auction-plugin')}
+                            onChange={(newValue) => setAttributes({ padding: newValue })}
+                            min={0}
+                            max={100}
+                        />
+                        <RangeControl
+                            label={__('Font Size', 'auction-plugin')}
+                            value={fontSize}
+                            onChange={(newValue) => setAttributes({ fontSize: newValue })}
+                            min={12}
+                            max={36}
                         />
                     </PanelBody>
                 </InspectorControls>

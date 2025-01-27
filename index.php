@@ -1,13 +1,13 @@
 <?php
 /**
  * Plugin Name:       CFS-auction
- * Plugin URI:        https://udemy.com
- * Description:       A plugin for adding blocks to a theme.
+ * Plugin URI:        https://github.com/codingfullstack/CFS-auction
+ * Description:       Auction plugin
  * Version:           1.0.0
  * Requires at least: 5.9
  * Requires PHP:      7.2
  * Author:            CodingFullStack
- * Author URI:        https://udemy.com
+ * Author URI:        https://github.com/codingfullstack
  * Text Domain:       auction-plugin
  * Domain Path:       /languages
  */
@@ -34,3 +34,5 @@ add_action('init', 'auction_register_cpt');
 add_action('add_meta_boxes', 'auction_add_meta_boxes');
 add_action('save_post', 'auction_save_custom_meta'); 
 add_action('init', 'auction_register_assets');
+add_action('after_setup_theme', 'myplugin_register_templates');
+

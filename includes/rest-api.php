@@ -82,3 +82,15 @@ function get_auction_status($request)
 
     return new WP_REST_Response(['status' => $status], 200);
 }
+// Funkcija, kuri apdoroja aukciono uždarymą
+function close_auction_status(WP_REST_Request $request) {
+    $auction_id = intval($request['auction_id']);
+    
+    // Patikrinkite, ar aukcionas egzistuoja
+    if (get_post_status($auction_id) !== 'publish') {
+        return new WP_REST_Response('Aukcionas nerastas arba nėra paskelbtas', 400);
+    }
+    update_post_meta($auction_id, '_status', 'closed');
+    return new WP_REST_Response('Aukciono statusas atnaujintas į "closed"', 200);
+}
+

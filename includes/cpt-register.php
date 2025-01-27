@@ -21,7 +21,7 @@ function auction_register_cpt() {
         'labels'             => $labels,
         'public'             => true,
         'hierarchical'       => false,
-        'supports'           => array('title', 'editor'),
+        'supports'           => array('title','excerpt'),
         'has_archive'        => true,
         'rewrite'            => array('slug' => 'auction'),
         'show_in_rest'       => true,

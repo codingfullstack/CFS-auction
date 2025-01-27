@@ -18,6 +18,22 @@
         "auction_id": {
             "type": "string",
             "default": ""
+        },
+        "marginTop": {
+            "type": "number",
+            "default": 0
+        },
+        "marginBottom": {
+            "type": "number",
+            "default": 0
+        },
+        "padding": {
+            "type": "number",
+            "default": 0
+        },
+        "fontSize": {
+            "type": "number",
+            "default": 12
         }
     },
     "script": "file:./frontend.js",

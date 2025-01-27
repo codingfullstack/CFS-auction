@@ -4,7 +4,17 @@ function bid_input_render_cb($attributes)
     ob_start(); // Pradeda buferiavimą
 
     $bid_amount = isset($attributes['bid_amount']) ? $attributes['bid_amount'] : '';
-    $auction_id = isset($attributes['auction_id']) ? $attributes['auction_id'] : get_the_ID();
+    if (get_post_type() === 'auction') {
+        // Jei dabartinis puslapis yra aukcionas, gauname ID iš dabartinio įrašo
+        $auction_id = get_the_ID();
+        
+    } elseif (!empty($attributes['auction_id']) && intval($attributes['auction_id']) > 0) {
+        // Jei tai ne aukciono puslapis, tikriname, ar atributai turi galiojantį auction_id
+        $auction_id = intval($attributes['auction_id']);
+    } else {
+        // Nei dabartinis puslapis nėra aukcionas, nei ID nėra perduotas
+        return "Nerastas aukciono ID";
+    }
     ?>
     <div class="notification" id="notification" style="display: none;"></div>
 
