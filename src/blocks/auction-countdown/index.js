@@ -43,28 +43,40 @@ registerBlockType(block.name, {
         }, [auction_id]);
 
         // Apskaičiuoti likusį laiką iki aukciono pabaigos
-        useEffect(() => {
-            if (auctionData && auctionData.end_date) {
-                const endDate = new Date(auctionData.end_date);
-                const timer = setInterval(() => {
-                    const now = new Date();
-                    const timeLeft = endDate - now;
-
-                    if (timeLeft <= 0) {
-                        setRemainingTime(__('Auction has ended', 'auction-plugin'));
-                        clearInterval(timer);
-                    } else {
-                        const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-                        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-                        setRemainingTime(`${hours}h ${minutes}m ${seconds}s`);
-                    }
-                }, 1000);
-
-                return () => clearInterval(timer);
-            }
-        }, [auctionData]);
+        // useEffect(() => {
+        //     if (auctionData && auctionData.end_date) {
+        //         const endDate = new Date(auctionData.end_date);
+                
+        //         // ✅ Apsauga nuo kelių intervalų
+        //         let timer;
+        //         if (!window.auctionCountdownTimer) {
+        //             window.auctionCountdownTimer = setInterval(() => {
+        //                 const now = new Date();
+        //                 const timeLeft = endDate - now;
+        
+        //                 if (timeLeft <= 0) {
+        //                     setRemainingTime(__('Auction has ended', 'auction-plugin'));
+        //                     clearInterval(window.auctionCountdownTimer);
+        //                     window.auctionCountdownTimer = null;
+        //                 } else {
+        //                     const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        //                     const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+        //                     const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+        
+        //                     setRemainingTime(`${hours}h ${minutes}m ${seconds}s`);
+        //                 }
+        //             }, 1000);
+        //         }
+        
+        //         // ✅ Išvalome laikmatį, kai komponentas atsijungia
+        //         return () => {
+        //             if (window.auctionCountdownTimer) {
+        //                 clearInterval(window.auctionCountdownTimer);
+        //                 window.auctionCountdownTimer = null;
+        //             }
+        //         };
+        //     }
+        // }, [auctionData]);
 
         return (
             <>

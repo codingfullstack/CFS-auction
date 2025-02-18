@@ -43,7 +43,7 @@ function handle_live_bid()
     if ($bid_amount >= $buy_now_price) {
         update_post_meta($auction_id, '_status', 'sold');
         update_post_meta($auction_id, 'winner', $user_id);
-        wp_send_json_success(['message' => 'Siūlymas priimtas, Jūs laimėjote!', 'bid_amount' => $bid_amount]);
+        wp_send_json_success(['message' => 'Siūlymas priimtas, Jūs laimėjote!', 'bid_amount' => $bid_amount, 'stop_timer' => true]);
     }
     
     wp_send_json_success(['message' => 'Siūlymas priimtas', 'bid_amount' => $bid_amount]); 

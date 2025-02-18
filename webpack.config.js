@@ -11,7 +11,7 @@ export default {
     entry: {
         ...defaultConfig.entry(),
         "admin/index": "./src/admin",
-    },
+    }, 
     output: {
         path: join(__dirname, "build"),
         filename: "[name].js", 

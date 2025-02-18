@@ -6,69 +6,92 @@ function auction_submit_bid(WP_REST_Request $request)
 {
     global $wpdb;
 
-    $auction_id = intval($request->get_param('auction_id'));
+    $auction_id = absint($request->get_param('auction_id'));
     $bid_amount = floatval($request->get_param('bid_amount'));
     $user_id = get_current_user_id();
 
     if (!$auction_id || !$bid_amount) {
-        return new WP_REST_Response(['error' => 'Trūksta duomenų.'], 400);
+        return new WP_REST_Response(['error' => __('Missing required parameters.', 'auction-plugin')], 400);
     }
 
     $table_name = $wpdb->prefix . 'auctions_bid';
+    // Gauti dabartinę aukščiausią kainą
     $current_highest_bid = $wpdb->get_var($wpdb->prepare(
         "SELECT MAX(bid_amount) FROM $table_name WHERE auction_id = %d",
         $auction_id
     ));
 
-    if ($bid_amount > $current_highest_bid) {
-        $wpdb->insert($table_name, [
-            'auction_id' => $auction_id,
-            'user_id' => $user_id,
-            'bid_amount' => $bid_amount,
-        ]);
-        return new WP_REST_Response(['message' => 'Siūlymas priimtas!', 'bid_amount' => $bid_amount], 200);
-    } else {
-        return new WP_REST_Response(['error' => 'Siūlymas per mažas.'], 400);
+    $current_highest_bid = $current_highest_bid ? floatval($current_highest_bid) : 0;
+
+    if ($bid_amount <= $current_highest_bid) {
+        return new WP_REST_Response(['error' => __('Bid amount is too low.', 'auction-plugin')], 400);
     }
+
+    // Įterpti naują siūlymą
+    $wpdb->insert($table_name, [
+        'auction_id' => $auction_id,
+        'user_id'    => $user_id,
+        'bid_amount' => $bid_amount,
+        'bid_time'   => current_time('mysql'),
+    ]);
+
+    return new WP_REST_Response(['message' => __('Bid successfully submitted!', 'auction-plugin'), 'bid_amount' => $bid_amount], 200);
 }
 
 // Gauti siūlymų sąrašą
-function auction_get_bids(WP_REST_Request $request)
-{
+function auction_get_bids(WP_REST_Request $request) {
     global $wpdb;
 
-    $auction_id = intval($request->get_param('id'));
+    // Gauti "id" iš užklausos
+    $auction_id = absint($request->get_param('id'));
+
+    // Patikrinti, ar ID pateiktas
     if (!$auction_id) {
-        return new WP_REST_Response(['error' => 'Nurodykite aukciono ID.'], 400);
+        return new WP_Error(
+            'missing_id',
+            __('Auction ID is missing.', 'auction-plugin'),
+            ['status' => 400]
+        );
     }
 
+    // SQL užklausa gauti siūlymus
     $table_name = $wpdb->prefix . 'auctions_bid';
     $bids = $wpdb->get_results($wpdb->prepare(
-        "SELECT user_id, bid_amount, bid_time FROM $table_name WHERE auction_id = %d ORDER BY bid_time DESC",
+        "SELECT id, user_id, bid_amount, bid_time 
+        FROM $table_name 
+        WHERE auction_id = %d 
+        ORDER BY bid_time DESC 
+        LIMIT 2",
         $auction_id
     ));
 
-    return new WP_REST_Response($bids, 200);
-}
-function auction_get_auction_data(WP_REST_Request $request)
-{
-    $auction_id = $request->get_param('auction_id');
-
-    if (!$auction_id) {
-        return new WP_REST_Response(['error' => 'Aukciono ID nėra nurodytas.'], 400);
+    // Jei siūlymų nėra
+    if (empty($bids)) {
+        return new WP_REST_Response([], 200); // Grąžiname tuščią sąrašą vietoj klaidos
     }
 
-    // Paimame aukciono pradžios ir pabaigos datas iš postmeta
+    // Grąžinti siūlymus
+    return new WP_REST_Response($bids, 200);
+}
+
+function auction_get_auction_data(WP_REST_Request $request) {
+    $auction_id = absint($request->get_param('auction_id'));
+
+    if (!$auction_id) {
+        return new WP_REST_Response(['error' => __('Auction ID is missing.', 'auction-plugin')], 400);
+    }
+
+    // Gauti meta duomenis
     $start_date = get_post_meta($auction_id, '_auction_date_start', true);
     $end_date = get_post_meta($auction_id, '_auction_date_end', true);
 
     if (!$start_date || !$end_date) {
-        return new WP_REST_Response(['error' => 'Nėra nurodytos pradžios arba pabaigos datos.'], 400);
+        return new WP_REST_Response(['error' => __('Auction data not found.', 'auction-plugin')], 404);
     }
 
     return new WP_REST_Response([
         'start_date' => $start_date,
-        'end_date' => $end_date,
+        'end_date'   => $end_date,
     ], 200);
 }
 function get_auction_status($request)
@@ -93,4 +116,5 @@ function close_auction_status(WP_REST_Request $request) {
     update_post_meta($auction_id, '_status', 'closed');
     return new WP_REST_Response('Aukciono statusas atnaujintas į "closed"', 200);
 }
+
 
