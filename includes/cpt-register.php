@@ -30,3 +30,4 @@ function auction_register_cpt() {
     register_post_type('auction', $args);
 }
 
+

@@ -32,4 +32,16 @@ function myplugin_register_templates() {
     error_log('Template file not found: ' . $template);
     return ''; // Jei failas nerastas, grąžins tuščią turinį
   }
+  function force_default_auction_template($post_id, $post, $update) {
+    if ($update) {
+        return; // Jei tai yra jau išsaugotas įrašas, nekeiskime šablono
+    }
+    $default_template = 'auction';
+    if (get_post_type($post_id) === 'auction') {
+        update_post_meta($post_id, '_wp_page_template', $default_template);
+        error_log("✅ Default template forced: " . $default_template);
+    }
+}
+add_action('save_post', 'force_default_auction_template', 10, 3);
+
   

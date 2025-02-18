@@ -50,3 +50,42 @@ function handle_live_bid()
 }
 add_action('wp_ajax_live_bid', 'handle_live_bid');
 add_action('wp_ajax_nopriv_live_bid', 'handle_live_bid');
+function create_auction() {
+    check_ajax_referer('auction_nonce', 'security');
+
+    // ✅ Patikriname, ar visi būtini laukai užpildyti
+    $required_fields = ['post_title', 'start_price', 'buy_now_price', 'bid_step', 'reserve_price', 'excerpt'];
+    $errors = [];
+
+    foreach ($required_fields as $field) {
+        if (empty($_POST[$field])) {
+            $errors[] = ucfirst(str_replace('_', ' ', $field)) . " yra būtinas!";
+        }
+    }
+
+    // Jei yra klaidų, grąžiname jas AJAX atsakyme
+    if (!empty($errors)) {
+        wp_send_json(["success" => false, "message" => implode('<br>', $errors)]);
+    }
+
+    // ✅ Sukuriame naują aukciono įrašą
+    $auction_id = wp_insert_post([
+        'post_title'  => sanitize_text_field($_POST['post_title']),
+        'post_type'   => 'auction',
+        'post_status' => 'publish',
+    ]);
+
+    // ✅ Jei įrašas sukurtas, išsaugome meta laukus
+    if ($auction_id) {
+        $_POST['status'] = 'active'; // Standartiškai priskiriame aukciono būseną
+        auction_save_custom_meta($auction_id); // 🔥 ČIA PANAUDOJAME FUNKCIJĄ
+
+        wp_send_json(["success" => true, "message" => "✅ Aukcionas sukurtas sėkmingai!", "auction_id" => $auction_id]);
+    } else {
+        wp_send_json(["success" => false, "message" => "❌ Klaida įrašant duomenis!"]);
+    }
+}
+
+add_action('wp_ajax_create_auction', 'create_auction');
+
+
