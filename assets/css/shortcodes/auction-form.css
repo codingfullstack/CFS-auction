@@ -1,0 +1,73 @@
+/* Bendra forma */
+#auction-form {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #f8f8f8;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Etiketės */
+#auction-form label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #333;
+}
+
+/* Įvesties laukai */
+#auction-form input,
+#auction-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* `textarea` išplėtimas */
+#auction-form textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+/* Mygtukas */
+#auction-form input[type="submit"] {
+    background: #0073aa;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    width: 100%;
+}
+
+/* Mygtuko paspaudimas */
+#auction-form input[type="submit"]:hover {
+    background: #005f8d;
+}
+
+/* Žinutė */
+#auction-message {
+    margin-top: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Reaguojantis dizainas mažiems ekranams */
+@media (max-width: 600px) {
+    #auction-form {
+        padding: 15px;
+    }
+    
+    #auction-form input, 
+    #auction-form textarea {
+        font-size: 14px;
+    }
+}
