@@ -12,14 +12,18 @@ jQuery(document).ready(function($) {
             auction_date_start: $("#auction_date_start").val(),
             auction_date_end: $("#auction_date_end").val(),
             reserve_price: $("#reserve_price").val(),
-            excerpt: $("#excerpt").val()
+            excerpt: $("#excerpt").val(),
+            status: $("#status").val(),
+            auction_media_url: $("#up_og_image").val()
         };
+        
 
         $.post(auctionFormData.ajax_url, formData, function(response) {
             $("#auction-message").html(response.message).css("color", response.success ? "green" : "red");
             if (response.success) {
-                $("#auction-form")[0].reset(); // Išvalome formą po sėkmingo įrašo
+                $("#auction-form")[0].reset();
             }
         }, "json");
     });
 });
+

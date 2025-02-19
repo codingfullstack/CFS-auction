@@ -77,7 +77,6 @@ function create_auction() {
 
     // ✅ Jei įrašas sukurtas, išsaugome meta laukus
     if ($auction_id) {
-        $_POST['status'] = 'active'; // Standartiškai priskiriame aukciono būseną
         auction_save_custom_meta($auction_id); // 🔥 ČIA PANAUDOJAME FUNKCIJĄ
 
         wp_send_json(["success" => true, "message" => "✅ Aukcionas sukurtas sėkmingai!", "auction_id" => $auction_id]);
