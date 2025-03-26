@@ -37,7 +37,7 @@ registerBlockType(block.name, {
                         }
                     })
                     .catch(error => {
-                        setError(__('Error fetching auction data', 'auction-plugin'));
+                        setError(__('Error fetching auction data', 'cfs-auction'));
                     });
             }
         }, [auction_id]);
@@ -55,7 +55,7 @@ registerBlockType(block.name, {
         //                 const timeLeft = endDate - now;
         
         //                 if (timeLeft <= 0) {
-        //                     setRemainingTime(__('Auction has ended', 'auction-plugin'));
+        //                     setRemainingTime(__('Auction has ended', 'cfs-auction'));
         //                     clearInterval(window.auctionCountdownTimer);
         //                     window.auctionCountdownTimer = null;
         //                 } else {
@@ -81,36 +81,36 @@ registerBlockType(block.name, {
         return (
             <>
                 <InspectorControls>
-                    <PanelBody title={__('Auction Settings', 'auction-plugin')}>
+                    <PanelBody title={__('Auction Settings', 'cfs-auction')}>
                         <TextControl
-                            label={__('Auction ID', 'auction-plugin')}
+                            label={__('Auction ID', 'cfs-auction')}
                             value={auction_id}
                             onChange={(newVal) => setAttributes({ auction_id: newVal })}
-                            placeholder={__('Enter Auction ID', 'auction-plugin')}
+                            placeholder={__('Enter Auction ID', 'cfs-auction')}
                         />
                        <RangeControl
-                            label={__('Margin Top', 'auction-plugin')}
+                            label={__('Margin Top', 'cfs-auction')}
                             value={marginTop}
                             onChange={(newValue) => setAttributes({ marginTop: newValue })}
                             min={0}
                             max={100}
                         />
                         <RangeControl
-                            label={__('Margin Bottom', 'auction-plugin')}
+                            label={__('Margin Bottom', 'cfs-auction')}
                             value={marginBottom}
                             onChange={(newValue) => setAttributes({ marginBottom: newValue })}
                             min={0}
                             max={100}
                         />
                         <RangeControl
-                            label={__('Padding', 'auction-plugin')}
+                            label={__('Padding', 'cfs-auction')}
                             value={padding}
                             onChange={(newValue) => setAttributes({ padding: newValue })}
                             min={0}
                             max={100}
                         />
                         <RangeControl
-                            label={__('Font Size', 'auction-plugin')}
+                            label={__('Font Size', 'cfs-auction')}
                             value={fontSize}
                             onChange={(newValue) => setAttributes({ fontSize: newValue })}
                             min={12}
@@ -119,12 +119,12 @@ registerBlockType(block.name, {
                     </PanelBody>
                 </InspectorControls>
                 <div {...blockProps}>
-                    <h3>{__('Auction Countdown', 'auction-plugin')}</h3>
+                    <h3>{__('Auction Countdown', 'cfs-auction')}</h3>
                     {error && <p>{error}</p>}
                     {auctionData && (
-                        <p className='auction-countdown-time'>{__('Time remaining:', 'auction-plugin')} {remainingTime}</p>
+                        <p className='auction-countdown-time'>{__('Time remaining:', 'cfs-auction')} {remainingTime}</p>
                     )}
-                    {!auction_id && <p>{__('Please set an Auction ID.', 'auction-plugin')}</p>}
+                    {!auction_id && <p>{__('Please set an Auction ID.', 'cfs-auction')}</p>}
                 </div>
             </>
         );

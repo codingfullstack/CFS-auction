@@ -8,7 +8,7 @@
  * Requires PHP:      7.2
  * Author:            CodingFullStack
  * Author URI:        https://github.com/codingfullstack
- * Text Domain:       auction-plugin
+ * Text Domain:       cfs-auction
  * Domain Path:       /languages
  */
 

@@ -34,17 +34,17 @@ function single_auction_render_cb($attributes)
                     <img src="<?php echo $img_url; ?>" alt="<?php echo esc_attr($post_title); ?>" class="thumbnail-image">
                 <?php endif; endforeach; ?>
         </div>
-        <p><?php echo esc_html(__('Pradinė kaina:', 'auction-plugin')); ?><span><?php echo esc_html($start_price, 'auction-plugin'); ?></span>
+        <p><?php echo esc_html(__('Pradinė kaina', 'cfs-auction')); ?><span>:<?php echo esc_html($start_price, 'cfs-auction'); ?></span>
         </p>
-        <p><?php echo esc_html(__('Pirkti dabar:', 'auction-plugin')); ?><span><?php echo esc_html($buy_now, 'auction-plugin'); ?></span>
+        <p><?php echo esc_html(__('Pirkti dabar', 'cfs-auction')); ?><span>:<?php echo esc_html($buy_now, 'cfs-auction'); ?></span>
         </p>
-        <p><?php echo esc_html(__('Statymo "žingsnis":', 'auction-plugin')); ?><span><?php echo esc_html($bid_step, 'auction-plugin'); ?></span>
+        <p><?php echo esc_html(__('Statymo "žingsnis"', 'cfs-auction')); ?><span>:<?php echo esc_html($bid_step, 'cfs-auction'); ?></span>
         </p>
-        <p><?php echo esc_html(__('Aukciono pradžia:', 'auction-plugin')); ?><span><?php echo esc_html($auction_date_start, 'auction-plugin'); ?></span>
+        <p><?php echo esc_html(__('Aukciono pradžia', 'cfs-auction')); ?><span>:<?php echo esc_html($auction_date_start, 'cfs-auction'); ?></span>
         </p>
-        <p><?php echo esc_html(__('Aukciono pabaiga:', 'auction-plugin')); ?><span><?php echo esc_html($auction_date_end, 'auction-plugin'); ?></span>
+        <p><?php echo esc_html(__('Aukciono pabaiga', 'cfs-auction')); ?><span>:<?php echo esc_html($auction_date_end, 'cfs-auction'); ?></span>
         </p>
-        <p><?php echo esc_html(__('Statusas:', 'auction-plugin')); ?><span class="auction-status"></span>
+        <p><?php echo esc_html(__('Statusas', 'cfs-auction')); ?>:<span class="auction-status"></span>
         </p>
     </div>
     <?php

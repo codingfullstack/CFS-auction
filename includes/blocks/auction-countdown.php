@@ -13,7 +13,7 @@ function auction_countdown_render_cb($attributes)
         $auction_id = intval($attributes['auction_id']);
     } else {
         // Nei dabartinis puslapis nėra aukcionas, nei ID nėra perduotas
-        return "Nerastas aukciono ID";
+        return __("Nerastas aukciono ID", 'cfs-auction');
     }
 
     // Paėmame aukciono pradžios ir pabaigos datas
@@ -33,15 +33,15 @@ function auction_countdown_render_cb($attributes)
         $style .= 'font-size: ' . esc_attr($attributes['fontSize']) . 'px; ';
     }
     if (!$start_date || !$end_date) {
-        return 'Nėra nurodytos pradžios arba pabaigos datos.';
+        return __('Nėra nurodytos pradžios arba pabaigos datos.','cfs-auction');
     }
     ?>
     <div class="auction-countdown-container" style="<?php echo $style; ?>">
-        <h3><?php echo __('Auction Countdown', 'auction-plugin'); ?></h3>
+        <h3><?php echo __('Auction Countdown', 'cfs-auction'); ?></h3>
         <p class="auction-countdown-time">
             <span id="auction-time" data-start-time="<?php echo esc_attr($start_date); ?>"
                 data-end-time="<?php echo esc_attr($end_date); ?>"
-                data-end-message="<?php echo esc_attr(__('Auction has ended', 'auction-plugin')); ?>"
+                data-end-message="<?php echo esc_attr(__('Aukcionas baigėsi', 'cfs-auction')); ?>"
                 data-auction-id ="<?php echo esc_attr($auction_id); ?>" >
             </span>
         </p>

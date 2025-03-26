@@ -1,7 +1,7 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "auction-plugin/single-auction",
+  "name": "cfs-auction/single-auction",
   "title": "single auction",
   "category": "widgets",
   "icon": "clock",
@@ -11,7 +11,7 @@
     "details"
   ],
   "version": "1.0.0",
-  "textdomain": "auction-plugin",
+  "textdomain": "cfs-auction",
   "editorScript": "file:./index.js",
   "attributes": {
       "auction_id": {

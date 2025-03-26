@@ -25,7 +25,7 @@ function bids_auction_render_cb($attributes) {
     ?>
     <div class="auction-bids-list-container" >
         <input type="hidden" id="auction_id" value="<?php echo esc_attr($auction_id); ?>">
-        <h3><?php esc_html_e('Auction Bids', 'CFS-auction'); ?></h3>
+        <h3><?php esc_html_e('Visi siūlymai', 'CFS-auction'); ?></h3>
         <ul id="bid_list">
         </ul>
     </div>

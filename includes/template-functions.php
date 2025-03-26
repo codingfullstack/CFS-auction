@@ -5,8 +5,8 @@ function myplugin_register_templates() {
         register_block_template(
             'cfs-auction//' . $post_type, // Pridėkite namespace
             [
-                'title'       => __( 'Custom Auction Template', 'auction-plugin' ),
-                'description' => __( 'A custom template for auctions.', 'auction-plugin' ),
+                'title'       => __( 'Individualus aukciono šablonas', 'cfs-auction' ),
+                'description' => __( 'Individualus aukcionui skirtas šablonas.', 'cfs-auction' ),
                 'content'     => myplugin_get_template_content('single-custom-template.html'), // Naudojame HTML šabloną
             ]
         );

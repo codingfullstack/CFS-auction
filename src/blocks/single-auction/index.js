@@ -13,17 +13,17 @@ registerBlockType(block.name, {
     return (
       <>
         <InspectorControls>
-          <PanelBody title={__("Auction Settings", "auction-plugin")}>
+          <PanelBody title={__("Auction Settings", "cfs-auction")}>
             <TextControl
-              label={__("Auction ID", "auction-plugin")}
+              label={__("Auction ID", "cfs-auction")}
               value={auction_id}
               onChange={(newVal) => setAttributes({ auction_id: newVal })}
-              placeholder={__("Enter Auction ID", "auction-plugin")}
+              placeholder={__("Enter Auction ID", "cfs-auction")}
             />
           </PanelBody>
         </InspectorControls>
         <div {...blockProps} >
-          <h2>{__("Auction Title", "auction-plugin")}</h2>
+          <h2>{__("Auction Title", "cfs-auction")}</h2>
           <div className="main-image-container">
             <img id="mainAuctionImage" src="#" alt="Main Auction" className="main-auction-image" />
           </div>
@@ -32,22 +32,22 @@ registerBlockType(block.name, {
             <img src="#" alt="Thumbnail 2" className="thumbnail-image" />
           </div>
           <p>
-            {__("Start Price:", "auction-plugin")} <span>0 EUR</span>
+            {__("Start Price:", "cfs-auction")} <span>0 EUR</span>
           </p>
           <p>
-            {__("Buy Now:", "auction-plugin")} <span>0 EUR</span>
+            {__("Buy Now:", "cfs-auction")} <span>0 EUR</span>
           </p>
           <p>
-            {__("Bid Step:", "auction-plugin")} <span>0 EUR</span>
+            {__("Bid Step:", "cfs-auction")} <span>0 EUR</span>
           </p>
           <p>
-            {__("Auction Start Date:", "auction-plugin")} <span>2024-01-01</span>
+            {__("Auction Start Date:", "cfs-auction")} <span>2024-01-01</span>
           </p>
           <p>
-            {__("Auction End Date:", "auction-plugin")} <span>2024-01-01</span>
+            {__("Auction End Date:", "cfs-auction")} <span>2024-01-01</span>
           </p>
           <p>
-            {__("Status:", "auction-plugin")} <span className="auction-status">Open</span>
+            {__("Status:", "cfs-auction")} <span className="auction-status">Open</span>
           </p>
         </div>
       </>

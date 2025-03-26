@@ -11,11 +11,11 @@ const auctionState = window.__auctionStateSingleton || {
       console.log("🔍 Aukciono statusas iš API:", data.status);
 
       if (data.status === "sold") {
-        this.markAsSold(); // ✅ Pažymime, kad aukcionas baigtas
+        this.markAsSold();
         return true;
       } else if (data.status === "open") {
         console.log("✅ Aukcionas atidarytas! Paleidžiame laikmatį.");
-        this.startCountdown(updateCountdown, auctionId); // ✅ Pradedame laikmatį
+        this.startCountdown(updateCountdown);
         return false;
       } else {
         console.warn("⚠️ Nepalaikomas aukciono statusas:", data.status);
@@ -35,28 +35,39 @@ const auctionState = window.__auctionStateSingleton || {
     }
   },
 
-  startCountdown(updateCountdown, auctionId) {
-    if (this.isSold || this.countdownInterval !== null) {
-      console.log("⚠️ Aukcionas jau baigtas arba laikmatis jau veikia.");
+  startCountdown(updateCountdown) {
+    if (this.isSold) {
+      console.log("⛔ Aukcionas jau baigtas – laikmatis nepaleistas.");
       return;
     }
+
+    if (this.countdownInterval !== null) {
+      console.log("⚠️ Laikmatis jau veikia.");
+      return;
+    }
+
     this.countdownInterval = setInterval(updateCountdown, 1000);
-    console.log("✅ Intervalas paleistas:", this.countdownInterval);
+    console.log("✅ Laikmatis paleistas:", this.countdownInterval);
   },
 
   stopCountdown() {
     const auctionElement = document.querySelector("#auction-time");
+
     if (this.countdownInterval) {
       clearInterval(this.countdownInterval);
-    } else {
+      console.log("🛑 Laikmatis sustabdytas.");
+    }
+
+    if (auctionElement) {
       auctionElement.innerHTML = "Auction has ended. SOLD";
     }
+
     this.countdownInterval = null;
     this.isSold = true;
   },
 };
 
-// ✅ Užtikriname, kad tas pats objektas būtų naudojamas visur
+// ✅ Užtikriname, kad singletonas išliktų
 window.__auctionStateSingleton = auctionState;
 
 export default auctionState;

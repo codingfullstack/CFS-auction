@@ -19,9 +19,9 @@ function bid_input_render_cb($attributes)
     <div class="notification" id="notification" style="visibility: hidden; "></div>
 
     <div class="auction-bid-input-container">
-        <h3><?php echo esc_html(__('Enter Your Bid', 'CFS-auction')); ?></h3>
+        <h3><?php echo esc_html(__('Jūsų siūlymas', 'CFS-auction')); ?></h3>
         <input type="text" id="bid_amount" class="auction-bid-input" value="<?php echo esc_attr($bid_amount); ?>"
-            placeholder="<?php echo esc_attr(__('Enter your bid...', 'CFS-auction')); ?>" />
+            placeholder="<?php echo esc_attr(__('Jūsų siūlymas...', 'CFS-auction')); ?>" />
         <input type="hidden" id="auction_id" value="<?php echo esc_attr($auction_id); ?>" />
         <button  id="submit_bid" data-ajaxurl="<?php echo admin_url('admin-ajax.php'); ?>"
             data-nonce="<?php echo wp_create_nonce('live_bid_nonce'); ?>"

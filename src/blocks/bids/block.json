@@ -1,7 +1,7 @@
 {
     "$schema": "https://schemas.wp.org/trunk/block.json",
     "apiVersion": 3,
-    "name": "auction-plugin/bids",
+    "name": "cfs-aucton/bids",
     "title": "bids",
     "category": "text",
     "icon": "list-view",
@@ -11,7 +11,7 @@
       "bids"
     ],
     "version": "1.0.3",
-    "textdomain": "auction-plugin",
+    "textdomain": "cfs-aucton",
     "editorScript": "file:./index.js",
     "attributes": {
       "auction_id": {

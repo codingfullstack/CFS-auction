@@ -15,13 +15,13 @@ function handle_live_bid()
     $status = get_post_meta($auction_id, '_status', true);
     $buy_now_price = floatval($buy_now_price);
     if ($status !== 'open') {
-        wp_send_json_error(['message' => 'Aukcionas uždarytas.']);
+        wp_send_json_error(['message' => __('Aukcionas uždarytas.', 'cfs-auction')]);
     }
     if (!$bid_amount || !$auction_id) {
-        wp_send_json_error(['message' => 'Klaida pateikiant siūlymą.']);
+        wp_send_json_error(['message' => __('Klaida pateikiant siūlymą.', 'cfs-auction')]);
     }
     if ($bid_amount <= $start_price) {
-        wp_send_json_error(['message' => 'Siūlymas per mažas, neatitinka pradinės kainos.']);
+        wp_send_json_error(['message' => __('Siūlymas per mažas, neatitinka pradinės kainos.', 'cfs-auction')]);
     }
     $table_name = $wpdb->prefix . 'auctions_bid';
     $current_highest_bid = $wpdb->get_var($wpdb->prepare(
@@ -30,10 +30,10 @@ function handle_live_bid()
     ));
     $current_highest_bid = $current_highest_bid ? floatval($current_highest_bid) : 0;
     if ($bid_amount <= $current_highest_bid) {
-        wp_send_json_error(['message' => 'Siūlymas per mažas.']);
+        wp_send_json_error(['message' => __('Siūlymas per mažas.', 'cfs-auction')]);
     }
     if ($bid_amount < $current_highest_bid + $bid_step || $bid_amount < $start_price + $bid_step) {
-        wp_send_json_error(['message' => 'Siūloma kaina neatitinka minimalaus didėjimo žingsnio.']);
+        wp_send_json_error(['message' => __('Siūloma kaina neatitinka minimalaus didėjimo žingsnio.', 'cfs-auction')]);
     }
     $wpdb->insert($table_name, [
         'auction_id' => intval($auction_id),
@@ -43,10 +43,10 @@ function handle_live_bid()
     if ($bid_amount >= $buy_now_price) {
         update_post_meta($auction_id, '_status', 'sold');
         update_post_meta($auction_id, 'winner', $user_id);
-        wp_send_json_success(['message' => 'Siūlymas priimtas, Jūs laimėjote!', 'bid_amount' => $bid_amount, 'stop_timer' => true]);
+        wp_send_json_success(['message' => __('Siūlymas priimtas, Jūs laimėjote!', 'cfs-auction'), 'bid_amount' => $bid_amount, 'stop_timer' => true]);
     }
     
-    wp_send_json_success(['message' => 'Siūlymas priimtas', 'bid_amount' => $bid_amount]); 
+    wp_send_json_success(['message' => __('Siūlymas priimtas','cfs-auction'), 'bid_amount' => $bid_amount]); 
 }
 add_action('wp_ajax_live_bid', 'handle_live_bid');
 add_action('wp_ajax_nopriv_live_bid', 'handle_live_bid');
@@ -56,7 +56,7 @@ function create_auction() {
     if (!current_user_can('edit_posts')) {
         wp_send_json([
             'success' => false,
-            'message' => 'Neturite teisės kurti aukcionų.'
+            'message' => __('Neturite teisės kurti aukcionų.', 'cfs-auction')
         ]);
         return;
     }
@@ -105,13 +105,13 @@ function create_auction() {
         auction_save_custom_meta($auction_id); // naudoja $_POST kaip visada
         wp_send_json([
             'success' => true,
-            'message' => '✅ Aukcionas sukurtas sėkmingai!',
+            'message' => __('Aukcionas sukurtas sėkmingai!', 'cfs-auction'),
             'auction_id' => $auction_id
         ]);
     } else {
         wp_send_json([
             'success' => false,
-            'message' => '❌ Klaida įrašant duomenis!'
+            'message' => __('❌ Klaida įrašant duomenis!', 'cfs-auction')
         ]);
     }
 }

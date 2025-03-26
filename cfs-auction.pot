@@ -1,0 +1,296 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CFS-auction\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-03-26 12:03+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.7.1; wp-6.7.2\n"
+"X-Domain: cfs-auction"
+
+#: shortcodes/auction-form.php:35
+msgid "Aprašymas"
+msgstr ""
+
+#: includes/meta-boxes.php:49
+msgid "Atidarytas"
+msgstr ""
+
+#: includes/blocks/auction-countdown.php:40
+msgid "Auction Countdown"
+msgstr ""
+
+#. Description of the plugin
+msgid "Auction plugin"
+msgstr ""
+
+#: includes/cpt-register.php:5 includes/cpt-register.php:7
+msgid "Aukcionai"
+msgstr ""
+
+#: includes/cpt-register.php:16
+msgid "Aukcionai nerasti"
+msgstr ""
+
+#: includes/cpt-register.php:17
+msgid "Aukcionai šiukšlių dėžėje nerasti"
+msgstr ""
+
+#: includes/cpt-register.php:6 includes/cpt-register.php:8
+msgid "Aukcionas"
+msgstr ""
+
+#: includes/blocks/auction-countdown.php:44
+msgid "Aukcionas baigėsi"
+msgstr ""
+
+#: includes/rest-api.php:114
+msgid "Aukcionas nerastas arba nėra paskelbtas"
+msgstr ""
+
+#: includes/ajax-handler.php:108
+msgid "Aukcionas sukurtas sėkmingai!"
+msgstr ""
+
+#: includes/ajax-handler.php:18
+msgid "Aukcionas uždarytas."
+msgstr ""
+
+#: includes/rest-api.php:89
+msgid "Aukciono duomenis nerasti."
+msgstr ""
+
+#: includes/meta-boxes.php:40 shortcodes/auction-form.php:29
+#: includes/blocks/single-auction.php:45
+msgid "Aukciono pabaiga"
+msgstr ""
+
+#: includes/meta-boxes.php:37 shortcodes/auction-form.php:26
+#: includes/blocks/single-auction.php:43
+msgid "Aukciono pradžia"
+msgstr ""
+
+#: includes/rest-api.php:117
+msgid "Aukciono statusas atnaujintas į \"closed\""
+msgstr ""
+
+#: includes/meta-boxes.php:34
+msgid "Bid Step (Žingsnis)"
+msgstr ""
+
+#: src/blocks/bid-input/block.json:1
+msgctxt "block description"
+msgid "Add bids input..."
+msgstr ""
+
+#: src/blocks/single-auction/block.json:1
+msgctxt "block description"
+msgid "Display  auction details."
+msgstr ""
+
+#: src/blocks/auction-countdown/block.json:1
+msgctxt "block description"
+msgid "Displays a countdown to the auction end time."
+msgstr ""
+
+#: src/blocks/auction-countdown/block.json:1 src/blocks/bid-input/block.json:1
+#: src/blocks/single-auction/block.json:1
+msgctxt "block keyword"
+msgid "auction"
+msgstr ""
+
+#: src/blocks/bid-input/block.json:1
+msgctxt "block keyword"
+msgid "bid"
+msgstr ""
+
+#: src/blocks/auction-countdown/block.json:1
+msgctxt "block keyword"
+msgid "countdown"
+msgstr ""
+
+#: src/blocks/single-auction/block.json:1
+msgctxt "block keyword"
+msgid "details"
+msgstr ""
+
+#: src/blocks/auction-countdown/block.json:1
+msgctxt "block keyword"
+msgid "timer"
+msgstr ""
+
+#: src/blocks/auction-countdown/block.json:1
+msgctxt "block title"
+msgid "Auction Countdown"
+msgstr ""
+
+#: src/blocks/bid-input/block.json:1
+msgctxt "block title"
+msgid "bid input"
+msgstr ""
+
+#: src/blocks/single-auction/block.json:1
+msgctxt "block title"
+msgid "single auction"
+msgstr ""
+
+#. Name of the plugin
+msgid "CFS-auction"
+msgstr ""
+
+#. Author of the plugin
+msgid "CodingFullStack"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://github.com/codingfullstack"
+msgstr ""
+
+#. URI of the plugin
+msgid "https://github.com/codingfullstack/CFS-auction"
+msgstr ""
+
+#: includes/cpt-register.php:15
+msgid "Ieškoti Aukcionų"
+msgstr ""
+
+#: includes/template-functions.php:8
+msgid "Individualus aukciono šablonas"
+msgstr ""
+
+#: includes/template-functions.php:9
+msgid "Individualus aukcionui skirtas šablonas."
+msgstr ""
+
+#: includes/ajax-handler.php:21
+msgid "Klaida pateikiant siūlymą."
+msgstr ""
+
+#: includes/cpt-register.php:11
+msgid "Naujas Aukcionas"
+msgstr ""
+
+#: includes/blocks/auction-countdown.php:16
+msgid "Nerastas aukciono ID"
+msgstr ""
+
+#: includes/rest-api.php:101
+msgid "Neteisingas ID"
+msgstr ""
+
+#: includes/ajax-handler.php:59
+msgid "Neturite teisės kurti aukcionų."
+msgstr ""
+
+#: includes/rest-api.php:52 includes/rest-api.php:81
+msgid "Nėra aukciono id."
+msgstr ""
+
+#: includes/blocks/auction-countdown.php:36
+msgid "Nėra nurodytos pradžios arba pabaigos datos."
+msgstr ""
+
+#: includes/rest-api.php:27
+msgid "Pasiūlymas per mažas."
+msgstr ""
+
+#: includes/rest-api.php:14
+msgid "pateikti ne visi duomenys."
+msgstr ""
+
+#: shortcodes/auction-form.php:14
+msgid "Pavadinimas"
+msgstr ""
+
+#: includes/cpt-register.php:13
+msgid "Peržiūrėti Aukcioną"
+msgstr ""
+
+#: includes/meta-boxes.php:31 shortcodes/auction-form.php:20
+msgid "Pirk iš karto kaina"
+msgstr ""
+
+#: includes/blocks/single-auction.php:39
+msgid "Pirkti dabar"
+msgstr ""
+
+#: includes/meta-boxes.php:28 shortcodes/auction-form.php:17
+#: includes/blocks/single-auction.php:37
+msgid "Pradinė kaina"
+msgstr ""
+
+#: includes/cpt-register.php:9
+msgid "Pridėti Naują"
+msgstr ""
+
+#: includes/cpt-register.php:10
+msgid "Pridėti Naują Aukcioną"
+msgstr ""
+
+#: includes/cpt-register.php:12
+msgid "Redaguoti Aukcioną"
+msgstr ""
+
+#: includes/meta-boxes.php:43 shortcodes/auction-form.php:32
+msgid "Rezervinė kaina"
+msgstr ""
+
+#: includes/ajax-handler.php:36
+msgid "Siūloma kaina neatitinka minimalaus didėjimo žingsnio."
+msgstr ""
+
+#: includes/ajax-handler.php:24
+msgid "Siūlymas per mažas, neatitinka pradinės kainos."
+msgstr ""
+
+#: includes/ajax-handler.php:33
+msgid "Siūlymas per mažas."
+msgstr ""
+
+#: includes/ajax-handler.php:49
+msgid "Siūlymas priimtas"
+msgstr ""
+
+#: includes/ajax-handler.php:46
+msgid "Siūlymas priimtas, Jūs laimėjote!"
+msgstr ""
+
+#: shortcodes/auction-form.php:37 includes/blocks/single-auction.php:47
+msgid "Statusas"
+msgstr ""
+
+#: shortcodes/auction-form.php:23 includes/blocks/single-auction.php:41
+msgid "Statymo \"žingsnis\""
+msgstr ""
+
+#: includes/rest-api.php:38
+msgid "Sūlymas priimtas!"
+msgstr ""
+
+#: includes/meta-boxes.php:48
+msgid "Uždarytas"
+msgstr ""
+
+#: includes/cpt-register.php:14
+msgid "Visi Aukcionai"
+msgstr ""
+
+#: includes/meta-boxes.php:61 shortcodes/auction-form.php:50
+msgid "Įkelkite arba pasirinkite mediją aukcionui."
+msgstr ""
+
+#: shortcodes/auction-form.php:48
+msgid "Įkelti Mediją"
+msgstr ""
+
+#: includes/ajax-handler.php:114
+msgid "❌ Klaida įrašant duomenis!"
+msgstr ""

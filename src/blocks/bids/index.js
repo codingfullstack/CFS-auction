@@ -15,12 +15,12 @@ registerBlockType(block.name, {
     return (
       <>
         <InspectorControls>
-          <PanelBody title={__("Auction Settings", "auction-plugin")}>
+          <PanelBody title={__("Auction Settings", "cfs-auction")}>
             <TextControl
-              label={__("Auction ID", "auction-plugin")}
+              label={__("Auction ID", "cfs-auction")}
               value={auction_id}
               onChange={(newVal) => setAttributes({ auction_id: newVal })}
-              placeholder={__("Enter Auction ID", "auction-plugin")}
+              placeholder={__("Enter Auction ID", "cfs-auction")}
             />
           </PanelBody>
         </InspectorControls>

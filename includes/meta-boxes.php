@@ -25,28 +25,28 @@ function auction_price_meta_box_callback($post) {
     $status = get_post_meta($post->ID, '_status', true);
 
     // Atvaizduokime įvedimo laukus
-    echo '<label for="start_price">Pradinė kaina</label>';
+    echo '<label for="start_price">'. __("Pradinė kaina", "cfs-auction" ) . '</label>';
     echo '<input type="number" id="start_price" name="start_price" value="' . esc_attr($start_price) . '" step="0.01" />';
 
-    echo '<label for="buy_now_price">Pirk iš karto kaina</label>';
+    echo '<label for="buy_now_price">'. __("Pirk iš karto kaina", "cfs-auction") . '</label>';
     echo '<input type="number" id="buy_now_price" name="buy_now_price" value="' . esc_attr($buy_now_price) . '" step="0.01" />';
 
-    echo '<label for="bid_step">Bid Step (Žingsnis)</label>';
+    echo '<label for="bid_step">'. __("Bid Step (Žingsnis)", "cfs-auction") .'</label>';
     echo '<input type="number" id="bid_step" name="bid_step" value="' . esc_attr($bid_step) . '" step="0.01" />';
 
-    echo '<label for="auction_date_start">Aukciono pradžia</label>';
+    echo '<label for="auction_date_start">' . __("Aukciono pradžia", 'cfs-auction') . '</label>';
     echo '<input type="datetime-local" id="auction_date_start" name="auction_date_start" value="' . esc_attr($auction_date_start) . '" />';
 
-    echo '<label for="auction_date_end">Aukciono pabaiga</label>';
+    echo '<label for="auction_date_end">' . __("Aukciono pabaiga", "cfs-auction") . '</label>';
     echo '<input type="datetime-local" id="auction_date_end" name="auction_date_end" value="' . esc_attr($auction_date_end) . '" />';
 
-    echo '<label for="reserve_price">Rezervinė kaina</label>';
+    echo '<label for="reserve_price">' . __("Rezervinė kaina", "cfs-auction") . '</label>';
     echo '<input type="number" id="reserve_price" name="reserve_price" value="' . esc_attr($reserve_price) . '" step="0.01" />';
 
     // Atidarytas / Neatidarytas (Select)
     $status_options = [
-        'closed' => 'Uždarytas',
-        'open' => 'Atidarytas', 
+        'closed' => __('Uždarytas', 'cfs-auction'),
+        'open' => __('Atidarytas', 'cfs-auction'),
     ];
 
     echo '<label for="status">Statusas</label>';
@@ -58,7 +58,7 @@ function auction_price_meta_box_callback($post) {
     echo '</select>';
     echo '<button type="button" id="og-img-btn" class="button upload-media-button">Įkelti Mediją</button>';
     echo '<input type="hidden" name="auction_media_url" id="up_og_image" value="" />';
-    echo '<p class="description">Įkelkite arba pasirinkite mediją aukcionui.</p>';
+    echo '<p class="description">' . __("Įkelkite arba pasirinkite mediją aukcionui.", 'cfs-auction') . '</p>';
     echo '<div class="media-preview">';
     echo '</div>';
 }
