@@ -1,32 +1,22 @@
 export function updateBids(bidList, bids) {
-    if (!bidList) {
-        console.error("❌ Klaida: `bidList` yra `null` arba `undefined`!");
+    if (!bidList || !(bidList instanceof HTMLElement)) {
+        console.error("❌ bidList nėra tinkamas HTML elementas");
         return;
     }
-    if (!(bidList instanceof HTMLElement)) {
-        console.error("❌ Klaida: `bidList` nėra HTML elementas!", bidList);
-        return;
-    }
+
     if (!Array.isArray(bids)) {
-        console.error("❌ Klaida: `bids` nėra masyvas! Gavome:", bids);
+        console.error("❌ bids nėra masyvas:", bids);
         return;
     }
-    const existingBidIds = new Set([...bidList.children].map(li => li.dataset.id));
-    const newBidIds = new Set(bids.map(bid => bid.id.toString()));
-
+    bids.sort((a, b) => Number(b.bid_amount) - Number(a.bid_amount));
+    bidList.innerHTML = "";
     bids.forEach(bid => {
-        const bidId = bid.id.toString();
-        if (!existingBidIds.has(bidId)) {
-            const listItem = document.createElement("li");
-            listItem.textContent = `${bid.bid_amount} EUR`;
-            listItem.dataset.id = bidId;
-            bidList.prepend(listItem);
-        }
-    });
+        const listItem = document.createElement("li");
+        const amount = Number(bid.bid_amount).toFixed(2);
 
-    [...bidList.children].forEach(listItem => {
-        if (!newBidIds.has(listItem.dataset.id)) {
-            listItem.remove();
-        }
+        listItem.textContent = `${amount} EUR`;
+        listItem.dataset.id = bid.id.toString();
+
+        bidList.appendChild(listItem);
     });
 }
